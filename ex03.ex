@@ -55,8 +55,9 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
-
+  def odd_even(x) do
+    Enum.map(x, fn(y) ->  end)
+  end
 
   ##############################################################################
   # 3.2:  5 points #
@@ -77,7 +78,9 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([x | _t], x), do: true
+  def list_contains([_1 | t], x), do: list_contains(t, x)
+  def list_contains(_, _x), do: false
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,9 +104,9 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
-
+  def list_equal([], []), do: true
+  def list_equal([x | t1], [x | t2]), do: list_equal(t1, t2)
+  def list_equal(_, _), do: false
 
   ##############################################################################
   # 3.4:  5 points #
