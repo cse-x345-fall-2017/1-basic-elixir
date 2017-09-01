@@ -55,7 +55,12 @@ defmodule Ex04 do
 
   """
 
-  def min(x), do: reduce(x, &(&1 > &2))
+  def min(l) do
+    reduce l, fn
+      (x, y) when x > y -> y
+      (x, y) when y > x -> x
+    end
+  end
 
   ##############################################################################
   # 4.3: 10 points #
