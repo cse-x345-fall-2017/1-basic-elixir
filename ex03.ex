@@ -55,17 +55,13 @@ defmodule Ex03 do
 
   """
 
-  def odd_even(x) do
-    Enum.map(x, fn(y) do
-      when Integer.is_even(y) do
-        :even
-      end
-      when Integer.is_odd(y) do
-        :odd
-      end
-    end)
+  def odd_even([x | t]) when Integer.is_even(x) do
+    [:even | odd_even(t)]
   end
-
+  def odd_even([x | t]) when Integer.is_odd(x) do
+    [:odd | odd_even(t)]
+  end
+  def odd_even(x), do: x
   ##############################################################################
   # 3.2:  5 points #
   ##################
