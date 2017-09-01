@@ -55,7 +55,7 @@ defmodule Ex04 do
 
   """
 
-  def min
+  def min(x), do: reduce(x, &(&1 > &2))
 
   ##############################################################################
   # 4.3: 10 points #
@@ -75,10 +75,7 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
-
-
-
+  def even_odd (x) do: reduce x, [], fn([eh, oh], x) -> [[x | eh], [oh]]end
 
   ###########################
   # IGNORE FROM HERE TO END #
