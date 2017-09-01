@@ -39,7 +39,7 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse(x), do: reduce(x, [], &([&1 | &2]))
 
   ##############################################################################
   # 4.2:  5 points #
@@ -98,4 +98,3 @@ defmodule TestEx04 do
   use ExUnit.Case
   doctest Ex04
 end
-
