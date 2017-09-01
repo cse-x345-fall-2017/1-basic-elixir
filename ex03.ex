@@ -55,12 +55,8 @@ defmodule Ex03 do
 
   """
 
-  def odd_even([x | t]) when Integer.is_even(x) do
-    [:even | odd_even(t)]
-  end
-  def odd_even([x | t]) when Integer.is_odd(x) do
-    [:odd | odd_even(t)]
-  end
+  def odd_even([x | t]) when Integer.is_even(x), do: [:even | odd_even(t)]
+  def odd_even([x | t]) when Integer.is_odd(x), do: [:odd | odd_even(t)]
   def odd_even(x), do: x
 
   ##############################################################################
