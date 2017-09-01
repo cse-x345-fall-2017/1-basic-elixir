@@ -75,8 +75,11 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd (x) do: reduce x, [], fn([eh, oh], x) -> [[x | eh], [oh]]end
-
+  def even_odd(x), do: reduce x, [[], []], fn
+    (x, [eh, oh]) when Integer.is_even(x) -> [[x | eh], oh]
+    (x, [eh, oh]) when Integer.is_odd(x) -> [eh, [x | oh]]
+  end
+  
   ###########################
   # IGNORE FROM HERE TO END #
   ###########################
