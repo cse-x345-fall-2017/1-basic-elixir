@@ -62,6 +62,7 @@ defmodule Ex03 do
     [:odd | odd_even(t)]
   end
   def odd_even(x), do: x
+
   ##############################################################################
   # 3.2:  5 points #
   ##################
@@ -132,7 +133,6 @@ defmodule Ex03 do
   Each element of the tuple is set to :x or :o if the corresponding
   player has occupied the square, or its number otherwise.
 
-
        X | X |
        --+---+--
          | O |        => { :x, :x, 3,   4, :o, 6,   7, :o, :x }
@@ -155,8 +155,15 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
-
+  def won({x, x, x, _4, _5, _6, _7, _8, _9}), do: x
+  def won({_1, _2, _3, x, x, x, _7, _8, _9}), do: x
+  def won({_1, _2, _3, _4, _5, _6, x, x, x}), do: x
+  def won({x, _2, _3, x, _5, _6, x, _8, _9}), do: x
+  def won({_1, x, _3, _4, x, _6, _7, x, _9}), do: x
+  def won({_1, _2, x, _4, _5, x, _7, _8, x}), do: x
+  def won({x, _2, _3, _4, x, _6, _7, _8, x}), do: x
+  def won({_1, _2, x, _4, x, _6, x, _8, _9}), do: x
+  def won(_), do: false
 
   ###########################
   # IGNORE FROM HERE TO END #
