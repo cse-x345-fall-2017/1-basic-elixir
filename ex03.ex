@@ -55,9 +55,13 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even(x) when Integer.is_even(x) do
+    :even
+  end
 
-
+  def odd_even(x) when Integer.is_odd(x) do
+    :odd
+  end
   ##############################################################################
   # 3.2:  5 points #
   ##################
