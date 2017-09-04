@@ -2,45 +2,6 @@ Code.compiler_options(ignore_module_conflict: true)
 
 defmodule Ex03 do
   require Integer
-
-  ##############################################################################
-  # 3: 4 questions,  20 points available                                       #
-  ##############################################################################
-  # Rubric (per question):                                                     #
-  #                                                                            #
-  # Does it pass tests?. . . . . . . . . . . . . . . . 60%                     #
-  #                                                                            #
-  # Was is written using the given constraints? Is . . 20%                     #
-  # it free of any errors not found by the tests                               #
-  #                                                                            #
-  #                                                                            #
-  # Is it written in a functional, Elixir style? . . . 20%                     #
-  ##############################################################################
-
-  @moduledoc """
-
-  All the exercises in this module should be solved using _named
-  functions_ (`def fname...`).
-
-  The `iex` sessions in the documentation block for each shows samples
-  of how the function should be used.
-
-  Remember you can load this code in `iex` from the command line and
-  play with it using:
-
-      $ iex ex03.ex
-
-  You can run tests using:
-
-      $ elixir ex03.ex
-
-  Use no library functions unless explicitly noted.
-  """
-
-  ##############################################################################
-  # 3.1:  5 points #
-  ##################
-
   @doc """
 
   Write a function (or functions) that take a list of integers and
@@ -52,20 +13,15 @@ defmodule Ex03 do
 
   (The library functions `Integer.is_even` and `Integer.is_odd` may
   be used if needed.)
-
   """
 
-  def odd_even . . . "your code"
-
-
-  ##############################################################################
-  # 3.2:  5 points #
-  ##################
+  def odd_even([x | t]) when Integer.is_even(x), do: [:even | odd_even(t)]
+  def odd_even([x | t]) when Integer.is_odd(x), do: [:odd | odd_even(t)]
+  def odd_even(x), do: x
 
   @doc """
   Write a function that returns true if a list contains a
   given value, false otherwise.
-
       iex> Ex03.list_contains([ 1, 2, 3, 4], 3)
       true
 
@@ -74,14 +30,11 @@ defmodule Ex03 do
 
       iex> Ex03.list_contains([ 1, 2, 3, 4], 3)
       true
-
   """
 
-  def list_contains . .. "your code"
-
-  ##############################################################################
-  # 3.3:  5 points #
-  ##################
+  def list_contains([x | _t], x), do: true
+  def list_contains([_1 | t], x), do: list_contains(t, x)
+  def list_contains(_, _x), do: false
 
   @doc """
   Two lists are equal if they contain the same number of elements,
@@ -101,9 +54,9 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
-
+  def list_equal([], []), do: true
+  def list_equal([x | t1], [x | t2]), do: list_equal(t1, t2)
+  def list_equal(_, _), do: false
 
   ##############################################################################
   # 3.4:  5 points #
@@ -126,31 +79,22 @@ defmodule Ex03 do
   Each element of the tuple is set to :x or :o if the corresponding
   player has occupied the square, or its number otherwise.
 
-
        X | X |
        --+---+--
          | O |        => { :x, :x, 3,   4, :o, 6,   7, :o, :x }
        --+---+--
          | O | X
-
-  There are eight winning positions (three horizontal, three vertical,
-  and two diagonal). Write a function that returns :x if X has won, :o
-  if O has won, and false otherwise.
-
-      iex> Ex03.won { :x, :o, 3,   :x, 5, :o,   :x, 8, :o }
-      :x
-
-      iex> Ex03.won { :o, :x, 3,   :x, :o, 6,   :x, 5, :o }
-      :o
-
-      iex> Ex03.won { :o, :x, 3,   :x, :o, 6,   :x, :o, 9 }
-      false
-
-  Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
-
+  def won({x, x, x, _4, _5, _6, _7, _8, _9}), do: x
+  def won({_1, _2, _3, x, x, x, _7, _8, _9}), do: x
+  def won({_1, _2, _3, _4, _5, _6, x, x, x}), do: x
+  def won({x, _2, _3, x, _5, _6, x, _8, _9}), do: x
+  def won({_1, x, _3, _4, x, _6, _7, x, _9}), do: x
+  def won({_1, _2, x, _4, _5, x, _7, _8, x}), do: x
+  def won({x, _2, _3, _4, x, _6, _7, _8, x}), do: x
+  def won({_1, _2, x, _4, x, _6, x, _8, _9}), do: x
+  def won(_), do: false
 
   ###########################
   # IGNORE FROM HERE TO END #
