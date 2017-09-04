@@ -3,10 +3,6 @@ Code.compiler_options(ignore_module_conflict: true)
 defmodule Ex04 do
   require Integer
 
-  ##############################################################################
-  # 3: 3 questions,  20 points available #
-  ########################################
-
   @doc """
   Here's a `reduce` function you can use in the following exercises.
   You may not use any Elixir library functions unless specifically allowed
@@ -27,11 +23,6 @@ defmodule Ex04 do
   def reduce([ ], state, _func),       do: state
   def reduce([ h | t ], state, func),  do: reduce(t, func.(h, state), func)
 
-
-  ##############################################################################
-  # 4.1:  5 points #
-  ##################
-
   @doc """
   Use `reduce` to reverse a list. (there's a hint above)
 
@@ -40,10 +31,6 @@ defmodule Ex04 do
 
   """
   def reverse(x), do: reduce(x, [], &([&1 | &2]))
-
-  ##############################################################################
-  # 4.2:  5 points #
-  ##################
   @doc """
   Use `reduce` to find the minimum of a list of numbers.
 
@@ -52,7 +39,6 @@ defmodule Ex04 do
 
       iex> Ex04.min [ 5, 2, -7, 9 ]
       -7
-
   """
 
   def min(l) do
