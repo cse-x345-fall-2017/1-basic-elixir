@@ -55,7 +55,32 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  
+#   Another Solution using Guard
+#   def odd_even([]), do: []
+#   def odd_even([head | tail]) when rem(head, 2) == 0 do
+#       [:even | odd_even(tail)]
+#   end
+#   def odd_even([_head|tail]) do
+#       [:odd | odd_even(tail)]
+#   end
+
+  
+  # Another Solution using if
+  # def odd_even([]), do: []
+  # def odd_even([head | tail]) do
+  #   if Integer.is_even(head), do: [:even|odd_even(tail)], else: [:odd|odd_even(tail)]
+  # end
+
+
+  #Solution using cond
+  def odd_even([]), do: []
+  def odd_even([head | tail]) do
+    cond do
+      Integer.is_even(head) -> [:even|odd_even(tail)]
+      true -> [:odd|odd_even(tail)]
+    end 
+  end
 
 
   ##############################################################################
@@ -77,7 +102,9 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([], _num), do: false
+  def list_contains([head|_tail], head), do: true
+  def list_contains([_head|tail], num), do: list_contains(tail, num)
 
   ##############################################################################
   # 3.3:  5 points #
@@ -100,9 +127,13 @@ defmodule Ex03 do
       false
 
   """
+#   Another solution
+#   def list_equal(list1, list1), do: true
+#   def list_equal(list1, list2), do: false
 
-  def list_equal . . . "your code"
-
+    def list_equal([], []), do: true
+    def list_equal([head|tail1], [head|tail2]), do: list_equal(tail1, tail2)
+    def list_equal(_list1, _list2), do: false
 
 
   ##############################################################################
@@ -149,7 +180,15 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({h, h, h,  _, _, _,  _, _, _}), do: h       #first row
+  def won({_, _, _,  h, h, h,  _, _, _}), do: h       #second row
+  def won({h, _, _,  h, _, _,  h, _, _}), do: h       #first column
+  def won({_, _, h,  _, h, _,  h, _, _}), do: h       #diagonal
+  def won({_, h, _,  _, h, _,  _, h, _}), do: h       #second column
+  def won({h, _, _,  _, h, _,  _, _, h}), do: h       #diagonal
+  def won({_, _, h,  _,  _, h, _, _, h}), do: h       #third column
+  def won({_, _, _,  _, _, _,  h, h, h}), do: h       #third row
+  def won(_tuple), do: false
 
 
   ###########################
