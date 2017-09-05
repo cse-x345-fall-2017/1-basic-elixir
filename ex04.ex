@@ -55,7 +55,7 @@ defmodule Ex04 do
 
   """
 
-    def min(list), do: reduce(list, &(min(&1, &2)))
+    def min(list), do: reduce(list, &(if &1 < &2, do: &1, else: &2))
 
   ##############################################################################
   # 4.3: 10 points #
