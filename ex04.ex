@@ -39,7 +39,9 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse(list) do
+    reduce(list, [], &[&1 | &2])
+  end
 
   ##############################################################################
   # 4.2:  5 points #
@@ -52,11 +54,20 @@ defmodule Ex04 do
 
       iex> Ex04.min [ 5, 2, -7, 9 ]
       -7
-
+      
+      iex> Ex04.min [ 5, 2, 7, 9, 2 ]
+      2    
   """
 
-  def min . . . "your code"
-
+  def min(list) do
+    smaller = fn
+      (a, b) when a < b -> a
+      (a, b) when a > b -> b
+      (a, _) -> a             #values are equal
+    end
+    reduce(list, smaller)
+  end
+  
   ##############################################################################
   # 4.3: 10 points #
   ##################
@@ -70,12 +81,25 @@ defmodule Ex04 do
       iex> Ex04.even_odd [ 1, 2, 3, 4, 5 ]
       { [ 2, 4],  [ 1, 3, 5 ] }
 
+      iex> Ex04.even_odd [ 1, 7, 2, 18, 3, 4, 5 ]
+      { [ 2, 18, 4],  [ 1, 7, 3, 5 ] }
+
   Hint: you're taking a list and converting it into something else. What function
   helps you do that. And, if you use that function, what does it return? That
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
+  def even_odd (list) do
+    evenFunc = fn
+      val, state when Integer.is_even(val) -> [val | state]
+      _, state -> state
+    end
+    oddFunc = fn
+      val, state when Integer.is_odd(val) -> [val | state]
+      _, state -> state  
+    end
+    {reduce(list, [], evenFunc) |> reverse, reduce(list, [], oddFunc) |> reverse}
+  end
 
 
 
