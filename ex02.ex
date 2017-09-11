@@ -30,7 +30,11 @@ defmodule Ex02 do
   # numbers, and second should be the difference                         #
   ########################################################################
 
-  list2a = your_anonymous_function(1, 2)
+  list2a = fn (1stInput, 2ndInput) ->
+    sumInput = 1stInput + 2ndInput
+    difInput = 1stInput - 2ndInput
+    [sumInput, difInput] 
+  end
 
   assert list2a.(1, 2)    == [ 3, -1 ]
   assert list2a.(-1, 100) == [ 99, -101 ]
@@ -41,7 +45,11 @@ defmodule Ex02 do
   # Do the same using the & syntax #
   ##################################
 
-  list2b = your_anonymous_function(1, 2)
+  list2b = fn (1stInput, 2ndInput) ->
+    sumInput = &(&1stInput + &2ndInput)
+    difInput = &(&1stInput - &2ndInput)
+    [sumInput, difInput]
+  end
 
   assert list2b.(1, 2)    == [ 3, -1 ]
   assert list2b.(-1, 100) == [ 99, -101 ]
@@ -53,8 +61,10 @@ defmodule Ex02 do
   # if the first two elements of a list are equal                #
   ################################################################
 
-  first2equal = your_anonymous_function([])
-
+  first2equal = fn ([h|t]) ->
+    redList[redHead|readTail] = t
+    h == redHead
+  end
 
   assert  first2equal.([4, 4, 5, 6, 7])
   assert !first2equal.([4, 5, 6, 7, 8])
