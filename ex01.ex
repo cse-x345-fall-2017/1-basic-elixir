@@ -36,7 +36,7 @@ defmodule Ex01 do
   # Write a function that adds two numbers using fn syntax #
   ##########################################################
 
-  sum2a = fn (input1st, input2nd) -> input1st + input2nd end
+  sum2a = fn (a, b) -> a + b end
 
 
   assert sum2a.(1, 2)    == 3
@@ -62,9 +62,9 @@ defmodule Ex01 do
   # no explicit + operators in your function                          #
   #####################################################################
 
-  sum3a = fn (input1st, input2nd, input3rd) ->
-    tempSum = sum2a.(input1st, input2nd)
-    sum2a.(tempSum, input3rd)
+  sum3a = fn (a, b, c) ->
+    tempSum = sum2a.(a, b)
+    sum2a.(tempSum, c)
   end
 
 
@@ -93,8 +93,8 @@ defmodule Ex01 do
   # function. The examples below will make this clearer :)               #
   ########################################################################
 
-  create_adder = fn(input1)->
-    fn(input2) -> input1 + input2
+  create_adder = fn(a)->
+    fn(b) -> a + b
     end
   end 
 
