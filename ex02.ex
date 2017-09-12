@@ -45,7 +45,7 @@ defmodule Ex02 do
   # Do the same using the & syntax #
   ##################################
 
-  list2b = fn (input1st, input2rd) ->
+  list2b = &(&input1st, &input2rd) ->
     sumInput = &(&input1st + &input2rd)
     difInput = &(&input1st - &input2rd)
     [sumInput, difInput]
