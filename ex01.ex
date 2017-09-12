@@ -50,7 +50,6 @@ defmodule Ex01 do
 
 
   sum2b = &(&1 + &2)
-  #end
 
   assert sum2b.(1, 2)    == 3
   assert sum2b.(-1, 100) == 99
