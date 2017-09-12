@@ -30,7 +30,7 @@ defmodule Ex00 do
       elixir ex00.ex
   """
 
-  inc = fn (inPut) -> inPut = inPut + 1     end
+  inc = fn (inPut) -> inPut + 1     end
 
 
   assert inc.(2)  == 3
