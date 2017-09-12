@@ -39,7 +39,10 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+
+
+  def reverse(list), do: reduce list, [], &[ &1 | &2 ]
+
 
   ##############################################################################
   # 4.2:  5 points #
@@ -55,7 +58,14 @@ defmodule Ex04 do
 
   """
 
-  def min . . . "your code"
+
+  def min([ head | tail ]) do
+    reduce [ head | tail ], fn
+      (a, b) when a > b -> b
+      (a, b) when a < b -> a
+    end
+  end
+  
 
   ##############################################################################
   # 4.3: 10 points #
@@ -75,9 +85,16 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
 
+  def reverse_into_tuple([ evens, odds ] = list), do: { reverse(evens), reverse(odds) }
 
+  def even_odd(list) do
+    output = reduce list, [ [], [] ], fn
+      (num, [ e, o ]) when Integer.is_even(num) -> [ [ num | e ], o ]
+      (num, [ e, o ]) when Integer.is_odd(num) -> [ e, [ num | o ] ]
+    end
+    reverse_into_tuple output
+  end
 
 
   ###########################
@@ -98,4 +115,3 @@ defmodule TestEx04 do
   use ExUnit.Case
   doctest Ex04
 end
-
