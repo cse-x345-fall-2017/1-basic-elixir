@@ -32,11 +32,11 @@ defmodule Ex01 do
 
   ##################
   # 1.1:  5 points #
- ##########################################################
+  ##########################################################
   # Write a function that adds two numbers using fn syntax #
   ##########################################################
 
-  sum2a = fn (1stInput, 2ndInput) -> 1stInput + 2ndInput end
+  sum2a = fn (input1st, input2nd) -> input1st + input2nd end
 
 
   assert sum2a.(1, 2)    == 3
@@ -49,7 +49,7 @@ defmodule Ex01 do
   ##########################################################
 
 
-  sum2b = &(&1stInput + &2ndInput)
+  sum2b = &(&input1st + &input2nd)
   end
 
   assert sum2b.(1, 2)    == 3
@@ -63,9 +63,9 @@ defmodule Ex01 do
   # no explicit + operators in your function                          #
   #####################################################################
 
-  sum3a = fn (1stInput, 2ndInput, 3rdInput) ->
-    tempSum = sum2a.(1stInput, 2ndInput)
-    sum2a.(tempSum, 3rdInput)
+  sum3a = fn (input1st, input2nd, input3rd) ->
+    tempSum = sum2a.(input1st, input2nd)
+    sum2a.(tempSum, input3rd)
   end
 
 
@@ -78,11 +78,10 @@ defmodule Ex01 do
   # Do the same using the & notation #
   ####################################
 
-  sum3b = fn (1stInput, 2ndInput, 3rdInput) ->
-    tempSum = &(sum2b.(&1stInput, &2ndInput))
-    &(sum2b.(tempSum, &3rdInput))
+  sum3b = fn (input1st, input2nd, input3d) ->
+    tempSum = &(sum2b.(&input1st, &input2nd))
+    &(sum2b.(tempSum, &input3rd))
   end
-
 
 
   assert sum3b.(1, 3, 5)  == 9
@@ -98,12 +97,11 @@ defmodule Ex01 do
   # function. The examples below will make this clearer :)               #
   ########################################################################
 
-  create_adder = your_anonymous_function(1)
+  create_adder = fn -> 1 + 1
   end
 
   add_2  = create_adder.(2)
   add_99 = create_adder.(99)
-  
   assert add_2.(3)  == 5
   assert add_99.(3) == 102
 
