@@ -49,8 +49,8 @@ defmodule Ex01 do
   ##########################################################
 
 
-  sum2b = &(&input1st + &input2nd)
-  end
+  sum2b = &(&1 + &2)
+  #end
 
   assert sum2b.(1, 2)    == 3
   assert sum2b.(-1, 100) == 99
@@ -78,10 +78,7 @@ defmodule Ex01 do
   # Do the same using the & notation #
   ####################################
 
-  sum3b = fn (input1st, input2nd, input3d) ->
-    tempSum = &(sum2b.(&input1st, &input2nd))
-    &(sum2b.(tempSum, &input3rd))
-  end
+  sum3b = &(sum2a.(&1,sum2a.(&2,&3)))
 
 
   assert sum3b.(1, 3, 5)  == 9
@@ -97,12 +94,13 @@ defmodule Ex01 do
   # function. The examples below will make this clearer :)               #
   ########################################################################
 
-  create_adder = fn -> 1 + 1
-  end
+  create_adder = fn(input1)->
+    fn(input2) -> input1 + input2
+    end
+  end 
 
   add_2  = create_adder.(2)
   add_99 = create_adder.(99)
   assert add_2.(3)  == 5
   assert add_99.(3) == 102
-
 end
