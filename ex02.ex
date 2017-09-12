@@ -69,5 +69,3 @@ defmodule Ex02 do
   assert !first2equal.([4, 5, 6, 7, 8])
 
 end
-
-

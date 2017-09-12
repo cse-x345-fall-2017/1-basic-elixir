@@ -99,5 +99,3 @@ defmodule Ex01 do
   assert add_99.(3) == 102
 
 end
-
-

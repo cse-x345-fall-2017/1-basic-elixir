@@ -41,5 +41,3 @@ defmodule Ex00 do
   assert inc.(2)  == 3
   assert inc.(-1) == 0
 end
-
-
