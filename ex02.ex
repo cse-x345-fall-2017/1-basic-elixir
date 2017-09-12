@@ -30,9 +30,9 @@ defmodule Ex02 do
   # numbers, and second should be the difference                         #
   ########################################################################
 
-  list2a = fn (1stInput, 2ndInput) ->
-    sumInput = 1stInput + 2ndInput
-    difInput = 1stInput - 2ndInput
+  list2a = fn (input1st, input2rd) ->
+    sumInput = input1st + input2rd
+    difInput = input1st - input2rd
     [sumInput, difInput] 
   end
 
@@ -45,9 +45,9 @@ defmodule Ex02 do
   # Do the same using the & syntax #
   ##################################
 
-  list2b = fn (1stInput, 2ndInput) ->
-    sumInput = &(&1stInput + &2ndInput)
-    difInput = &(&1stInput - &2ndInput)
+  list2b = fn (input1st, input2rd) ->
+    sumInput = &(&input1st + &input2rd)
+    difInput = &(&input1st - &input2rd)
     [sumInput, difInput]
   end
 
@@ -62,7 +62,7 @@ defmodule Ex02 do
   ################################################################
 
   first2equal = fn ([h|t]) ->
-    redList[redHead|readTail] = t
+    redList[redHead|redTail] = t
     h == redHead
   end
 
