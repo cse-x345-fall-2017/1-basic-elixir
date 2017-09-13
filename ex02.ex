@@ -30,7 +30,7 @@ defmodule Ex02 do
   # numbers, and second should be the difference                         #
   ########################################################################
 
-  list2a = fn a, b -> [ a + b, a - b] end
+  list2a = fn a, b -> [ a + b, a - b ] end
 
   assert list2a.(1, 2)    == [ 3, -1 ]
   assert list2a.(-1, 100) == [ 99, -101 ]
