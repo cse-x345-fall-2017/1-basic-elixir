@@ -75,10 +75,12 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def _even_odd_tuple(x, { even, odd }), do:
-    if Integer.is_even(x),
-      do: { even ++ [x], odd },
-      else: { even, odd ++ [x] }
+  def _even_odd_tuple(x, { even, odd }) when Integer.is_even(x) do
+      { even ++ [x], odd }
+  end
+  def _even_odd_tuple(x, { even, odd }) when Integer.is_odd(x) do
+      { even, odd ++ [x] }
+  end
 
   def even_odd([]), do: { [], [] }
   def even_odd(l), do: reduce(l, { [], [] }, &_even_odd_tuple/2)
