@@ -106,9 +106,15 @@ defmodule Ex03 do
 
   """
 
+  def list_equal([],[]), do: true
   def list_equal([a | taila], [b | tailb]) do
-    if
+    if a == b do
+      list_equal(taila, tailb)
+    else
+      false
+    end
   end
+  def list_equal(_, _), do: false
 
 
 
@@ -156,7 +162,16 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  # def won . . . "your code"
+  def won({a, _, _, a, _, _, a, _, _}), do: a
+  def won({_, a, _, _, a, _, _, a, _}), do: a
+  def won({_, _, a, _, _, a, _, _, a}), do: a
+  def won({a, _, _, _, a, _, _, _, a}), do: a
+  def won({_, _, a, _, a, _, a, _, _}), do: a
+  def won({a, a, a, _, _, _, _, _, _}), do: a
+  def won({_, _, _, a, a, a, _, _, _}), do: a
+  def won({_, _, _, _, _, _, a, a, a}), do: a
+  def won(_), do: false
+
 
 
   ###########################
