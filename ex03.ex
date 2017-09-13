@@ -55,13 +55,10 @@ defmodule Ex03 do
 
   """
 
-  def parity_atom(x), do:
-    if Integer.is_even(x), do: :even, else: :odd
+  def parity_atom(x), do: if Integer.is_even(x), do: :even, else: :odd
 
   def odd_even([]), do: []
-  def odd_even([ h | t ]), do:
-    [parity_atom(h) | odd_even(t)]
-
+  def odd_even([ h | t ]), do: [parity_atom(h) | odd_even(t)]
 
 
   ##############################################################################
@@ -110,10 +107,8 @@ defmodule Ex03 do
   """
 
   def list_equal([], []), do: true
-  def list_equal([ h | t1 ], [ h | t2 ]), do:
-    list_equal(t1, t2)
+  def list_equal([ h | t1 ], [ h | t2 ]), do: list_equal(t1, t2)
   def list_equal(_, _), do: false
-
 
 
   ##############################################################################
