@@ -60,7 +60,7 @@ defmodule Ex01 do
   # no explicit + operators in your function                          #
   #####################################################################
 
-  sum3a = fn a, b, c -> sum2a.(a, sum2a.(b, c)) end
+  sum3a = fn a, b, c -> a |> sum2a.(b) |> sum2a.(c) end
 
   assert sum3a.(1, 3, 5)  == 9
   assert sum3a.(1, -3, 5) == 3
@@ -71,7 +71,7 @@ defmodule Ex01 do
   # Do the same using the & notation #
   ####################################
 
-  sum3b = &(sum2b.(&1, sum2b.(&2, &3)))
+  sum3b = &(&1 |> sum2b.(&2) |> sum2b.(&3))
 
   assert sum3b.(1, 3, 5)  == 9
   assert sum3b.(1, -3, 5) == 3
