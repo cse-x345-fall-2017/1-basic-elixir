@@ -86,7 +86,7 @@ defmodule Ex01 do
   # function. The examples below will make this clearer :)               #
   ########################################################################
 
-  create_adder = fn a -> fn b -> a + b end end
+  create_adder = fn a -> &(&1 + a) end
 
   add_2  = create_adder.(2)
   add_99 = create_adder.(99)
