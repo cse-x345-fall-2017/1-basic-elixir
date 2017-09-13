@@ -56,16 +56,7 @@ defmodule Ex04 do
 
   """
 
-  def min_value(a, b) do
-    if a < b do
-      a
-    else
-      b
-    end
-  end
-
-  def min(l), do:
-    reduce(l, &min_value/2)
+  def min(l), do: reduce(l, &min/2)
 
   ##############################################################################
   # 4.3: 10 points #
