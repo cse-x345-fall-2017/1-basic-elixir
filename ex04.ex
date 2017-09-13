@@ -39,7 +39,10 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse (list) do 
+        reduce(list,[],&[ &1 | &2])
+
+  end
 
   ##############################################################################
   # 4.2:  5 points #
@@ -55,7 +58,9 @@ defmodule Ex04 do
 
   """
 
-  def min . . . "your code"
+  def min ([h | t]) do 
+        reduce(t,h, &min(&1,&2))
+  end
 
   ##############################################################################
   # 4.3: 10 points #
@@ -75,7 +80,25 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
+  def even_odd (list) do
+        even_list = reverse(reduce(list,[], fn (value, result) ->
+            cond do
+                Integer.is_even(value) -> [value | result]
+                true                   -> result
+            end
+        end
+        ))
+
+        odd_list = reverse(reduce(list,[], fn (value, result) ->
+            cond do
+                Integer.is_odd(value) -> [value | result]
+                true                   -> result
+            end
+        end
+        ))
+
+        {even_list,odd_list}
+  end
 
 
 
