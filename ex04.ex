@@ -39,8 +39,7 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse(l), do:
-    reduce(l, [], &[ &1 | &2 ])
+  def reverse(l), do: reduce(l, [], &[ &1 | &2 ])
 
   ##############################################################################
   # 4.2:  5 points #
@@ -82,10 +81,7 @@ defmodule Ex04 do
       else: { even, odd ++ [x] }
 
   def even_odd([]), do: { [], [] }
-  def even_odd(l), do:
-    reduce(l, { [], [] }, &_even_odd_tuple/2)
-
-
+  def even_odd(l), do: reduce(l, { [], [] }, &_even_odd_tuple/2)
 
 
   ###########################
