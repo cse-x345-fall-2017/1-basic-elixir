@@ -1,6 +1,9 @@
 ExUnit.start
 Code.load_file "support.ex"
 
+#Austin Wiedebusch
+#40340720
+
 defmodule Ex00 do
   use ExUnit.Case
   import Support
@@ -36,7 +39,7 @@ defmodule Ex00 do
   # Write a function that increments its numeric parameter #
   ##########################################################
 
-  inc = your_anonymous_function(1)
+  inc = fn (start) -> start + 1 end
 
   assert inc.(2)  == 3
   assert inc.(-1) == 0

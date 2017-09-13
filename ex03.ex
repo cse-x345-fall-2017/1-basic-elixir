@@ -55,7 +55,40 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+    def reverse([]) do [] end
+    def reverse([h|t]) do reverse(t) ++ [h] end
+
+    def odd_even([])  do [] end
+    def odd_even(list) when list != [] do
+
+        [h | t] = list
+
+        m_to_oe = %{0 => :even, 1 => :odd}
+
+        mod_h = rem(h,2)
+        
+        %{^mod_h => oe} = m_to_oe
+        
+        new_list = [oe]
+
+        reverse(odd_even(t,new_list))
+    end
+
+    def odd_even([],new_list) do new_list end
+    def odd_even(list, new_list) when list != [] do
+
+        [h | t] = list
+
+        m_to_oe = %{0 => :even, 1 => :odd}
+
+        mod_h = rem(h,2)
+        
+        %{^mod_h => oe} = m_to_oe
+        
+        new_list = [oe | new_list]
+
+        odd_even(t,new_list)
+    end
 
 
   ##############################################################################
@@ -77,7 +110,19 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+    def list_contains([],_val) do false end
+    def list_contains(list,val) do 
+        
+        [h | t] = list
+
+        check = h == val
+
+        val_map = %{:false => list_contains(t,val), :true => true}
+
+        %{^check => stop} = val_map
+
+        stop
+    end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +146,32 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+    def len([]) do 0 end
+    def len([_h | t]) do 1 + len(t) end
+
+    def list_equal([],[]) do true end
+    def list_equal(1,1) do false end
+    def list_equal(list1,list2) do 
+
+        check_len = len(list1) == len(list2)
+
+        [h1 | t1] = list1
+        [h2 | t2] = list2
+
+        list1_map = %{false: 1, true: t1}
+        list2_map = %{false: 1, true: t2}
+
+        %{^check_len => t1} = list1_map
+        %{^check_len => t2} = list2_map
+
+        check_val = h1 == h2
+
+        val_map = %{true: list_equal(t1,t2), false: false}
+        %{^check_val => stop} = val_map
+
+        stop
+
+    end
 
 
 
@@ -149,8 +219,74 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+    def won(state) do
 
+        #assumes input will not have both win by nature of the game
+
+        has_won_o = check(state, :o)
+
+        %{^has_won_o => winner} = %{:o => :o,false => check(state, :x)}
+
+        winner
+
+    end
+
+    def check(state, player) do
+
+        win = { player,player,player }
+        has_won = false
+
+    
+        #win states
+        h1 = { elem(state,0), elem(state,1), elem(state,2) }
+        h2 = { elem(state,3), elem(state,4), elem(state,5) }
+        h3 = { elem(state,6), elem(state,7), elem(state,8) }
+
+        v1 = { elem(state,0), elem(state,3), elem(state,6) }
+        v2 = { elem(state,1), elem(state,4), elem(state,7) }
+        v3 = { elem(state,2), elem(state,5), elem(state,8) }
+
+        d1 = { elem(state,0), elem(state,4), elem(state,8) }
+        d2 = { elem(state,2), elem(state,4), elem(state,6) }
+    
+        #all checks mapped
+
+        h1_check = %{true => true, false => h1 == win}
+        h2_check = %{true => true, false => h2 == win}
+        h3_check = %{true => true, false => h3 == win}
+
+        v1_check = %{true => true, false => v1 == win}
+        v2_check = %{true => true, false => v2 == win}
+        v3_check = %{true => true, false => v3 == win}
+
+        d1_check = %{true => true, false => d1 == win}
+        d2_check = %{true => true, false => d2 == win}
+
+        #if already won, keep true else check again
+        %{^has_won => winner} = h1_check
+        has_won = winner
+        %{^has_won => winner} = h2_check
+        has_won = winner
+        %{^has_won => winner} = h3_check
+        has_won = winner
+
+        %{^has_won => winner} = v1_check
+        has_won = winner
+        %{^has_won => winner} = v2_check
+        has_won = winner
+        %{^has_won => winner} = v3_check
+        has_won = winner
+
+        %{^has_won => winner} = d1_check
+        has_won = winner
+        %{^has_won => winner} = d2_check
+        has_won = winner
+
+        %{^has_won => winner} = %{true => player, false => false}
+
+        winner
+
+    end
 
   ###########################
   # IGNORE FROM HERE TO END #
