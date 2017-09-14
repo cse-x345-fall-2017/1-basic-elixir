@@ -22,7 +22,6 @@ defmodule Ex04 do
       [ 4, 3, 2, 1 ]
 
   """
-
   def reduce([ h | t ],  func),        do: reduce(t, h, func)
   def reduce([ ], state, _func),       do: state
   def reduce([ h | t ], state, func),  do: reduce(t, func.(h, state), func)
@@ -39,7 +38,9 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse([ h | t ]) do
+    reduce([ h | t ], [], &[&1 | &2])
+  end
 
   ##############################################################################
   # 4.2:  5 points #
@@ -54,8 +55,15 @@ defmodule Ex04 do
       -7
 
   """
-
-  def min . . . "your code"
+  def min([ h | t]) do
+    min_ = fn (num1, num2) ->
+      cond do
+        num1 <= num2  -> num1
+        num1 > num2  -> num2
+      end
+    end
+    reduce(t, h, min_)
+  end
 
   ##############################################################################
   # 4.3: 10 points #
@@ -74,11 +82,16 @@ defmodule Ex04 do
   helps you do that. And, if you use that function, what does it return? That
   return value will be the thing you have to manipulate.
   """
-
-  def even_odd . . . "your code"
-
-
-
+  def even_odd([ h | t ]) do
+    split = fn (num, {list_1, list_2}) ->
+              cond do
+                Integer.is_even(num) -> {list_1 ++ [num], list_2}
+                Integer.is_odd(num) -> {list_1, list_2 ++ [num]}
+              end
+            end
+    
+    reduce([ h | t ], {[], []}, split)
+  end
 
   ###########################
   # IGNORE FROM HERE TO END #
