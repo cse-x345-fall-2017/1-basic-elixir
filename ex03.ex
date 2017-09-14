@@ -55,7 +55,27 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even([]), do:[]
+  def odd_even(h|t) do
+    status = Integer.is_odd(t)
+    getStatus = fn(status)
+      true ->
+        curNum = :odd
+      false ->
+        curNum = :even
+    end
+    newList = [curNum|odd_even(t)]
+  end
+  def odd_even([]), do: []
+  def odd_even([h|t]) do
+    status = Integer.is_odd(h)
+    if status do
+      curNum = :odd
+    else
+      curNum = :even
+    end 
+    [curNum|odd_even(t)]
+  end
 
 
   ##############################################################################
@@ -77,7 +97,11 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([]), do:[]
+  def list_contains([h|t], target) do
+
+    checkHead =fn()
+  end
 
   ##############################################################################
   # 3.3:  5 points #
