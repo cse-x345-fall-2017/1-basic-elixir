@@ -55,7 +55,14 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even([]), do: []
+  def odd_even([ head | tail ]) do
+    case Integer.is_even(head) do
+      true -> [ :even | odd_even(tail) ]
+      false -> [ :odd | odd_even(tail) ]  
+    end
+  end
+
 
 
   ##############################################################################
@@ -76,8 +83,13 @@ defmodule Ex03 do
       true
 
   """
-
-  def list_contains . .. "your code"
+  def list_contains([], _ ), do: false
+  def list_contains([ head | tail ], num) do
+    case head==num do
+      true -> true
+      false -> list_contains(tail, num)
+    end
+  end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +113,22 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  def list_equal(input_1, input_2) do
+    case {input_1, input_2} do
+      {[ _ | _ ], []} -> false
+      {[], [ _ | _ ]} -> false
+      {[], []} -> true
+      {[ head_1 | tail_1 ], [ head_2 | tail_2 ]} ->
+        _list_equal([ head_1 | tail_1 ], [ head_2 | tail_2 ])
+      _ -> {:error, "Invalid input"}
+    end
+  end
+  def _list_equal([ head_1 | tail_1 ], [ head_2 | tail_2 ]) do
+    case head_1 == head_2 do
+      true -> list_equal(tail_1, tail_2)
+      false -> false
+    end
+  end
 
 
 
@@ -149,8 +176,19 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
-
+  def won(input) do
+    case input do
+      {a, a, a,   _, _, _,   _, _, _} -> a
+      {_, _, _,   a, a, a,   _, _, _} -> a
+      {_, _, _,   _, _, _,   a, a, a} -> a
+      {a, _, _,   a, _, _,   a, _, _} -> a
+      {_, a, _,   _, a, _,   _, a, _} -> a
+      {_, _, a,   _, _, a,   _, _, a} -> a
+      {a, _, _,   _, a, _,   _, _, a} -> a
+      {_, _, a,   _, a, _,   a, _, _} -> a
+      _ -> false
+    end
+  end
 
   ###########################
   # IGNORE FROM HERE TO END #
