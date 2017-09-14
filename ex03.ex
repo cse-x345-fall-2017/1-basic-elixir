@@ -176,7 +176,7 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def win(input) do
+  def won(input) do
     case input do
       {a, a, a,   _, _, _,   _, _, _} -> a
       {_, _, _,   a, a, a,   _, _, _} -> a
