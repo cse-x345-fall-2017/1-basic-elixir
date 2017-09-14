@@ -120,8 +120,22 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
+  def list_equal([], []) do
+    checkResult = true
+  end
+  def list_equal([], [h|t]) do
+    checkResult = false
+  end
+  def list_equal([h|t], []) do
+    checkResult = false
+  end
+  def list_equal([h1|t1], [h2|t2]) do
+    if h1 == h2 do
+      list_equal(t1, t2)
+    else
+      checkResult = false
+    end
+  end
 
 
   ##############################################################################
