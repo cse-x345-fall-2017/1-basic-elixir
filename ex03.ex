@@ -55,7 +55,10 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+
+  def odd_even([ head | tail ]) when Integer.is_even(head), do: [ :even | odd_even tail ]
+  def odd_even([ head | tail ]) when Integer.is_odd(head), do: [ :odd | odd_even tail ]
+  def odd_even([]), do: []
 
 
   ##############################################################################
@@ -77,7 +80,11 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+
+  def list_contains([ head | tail ], num) when head == num, do: true
+  def list_contains([ head | tail ], num) when head != num, do: list_contains(tail, num)
+  def list_contains([], num), do: false
+
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,8 +108,12 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
 
+  def list_equal([ head1 | tail1 ], [ head2 | tail2 ]) when head1 == head2, do: list_equal(tail1, tail2)
+  def list_equal([ head1 | tail1 ], [ head2 | tail2 ]) when head1 != head2, do: false
+  def list_equal([ head1 | tail1 ], []), do: false
+  def list_equal([], [ head2 | tail2 ]), do: false
+  def list_equal([], []), do: true
 
 
   ##############################################################################
@@ -149,7 +160,23 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+
+  # Horizontal
+  def won({ win, win, win,  _,   _,   _,    _,   _,   _   }), do: win
+  def won({ _,   _,   _,    win, win, win,  _,   _,   _   }), do: win
+  def won({ _,   _,   _,    _,   _,   _,    win, win, win }), do: win
+
+  # Vertical
+  def won({ win, _,   _,    win, _,   _,    win, _,   _   }), do: win
+  def won({ _,   win, _,    _,   win, _,    _,   win, _   }), do: win
+  def won({ _,   _,   win,  _,   _,   win,  _,   _,   win }), do: win
+
+  # Diagonal
+  def won({ win, _,   _,    _,   win, _,    _,   _,   win }), do: win
+  def won({ _,   _,   win,  _,   win, _,    win, _,   _   }), do: win
+
+  # None
+  def won({ _,   _,   _,    _,   _,   _,    _,   _,   _   }), do: false
 
 
   ###########################
