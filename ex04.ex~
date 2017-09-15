@@ -77,10 +77,9 @@ defmodule Ex04 do
 
   def even_odd(xs) do
   fun=fn (x,{even,odd}) -> if (Integer.is_even x), do: {[x|even],odd}, else: {even,[x|odd]} end
-  {even,odd}=reduce(xs,{[],[]},fun)
+  {even,odd}= reduce(xs,{[],[]},fun)
   {reverse(even),reverse(odd)}
   end
-
 
 
 
