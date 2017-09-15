@@ -3,7 +3,7 @@ Code.load_file "support.ex"
 
 defmodule Ex00 do
   use ExUnit.Case
- # import Support
+  import Support
 
   ##############################################################################
   # 1: 1 questions,  0 points available                                        #
