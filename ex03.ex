@@ -55,9 +55,17 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even([h | t]) when Integer.is_even(h) do
+    [:even | odd_even(t)]
+  end
 
-
+  def odd_even([h | t]) when Integer.is_odd(h) do
+    [:odd | odd_even(t)]
+  end
+  
+  def odd_even([]) do
+    []
+  end
   ##############################################################################
   # 3.2:  5 points #
   ##################
@@ -77,7 +85,17 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([head | _], value) when head == value do
+    true
+  end
+
+  def list_contains([head | tail], value) when head != value do
+    list_contains(tail, value)
+  end
+
+  def list_contains([], _) do
+    false
+  end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +119,25 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  def list_equal([head1 | tail1], [head2 | tail2]) when head1 == head2 do
+    list_equal(tail1, tail2)
+  end
+  
+  def list_equal([head1 | _], [head2 | _]) when head1 != head2 do
+    false
+  end
+  
+  def list_equal([], [_ | _]) do
+    false
+  end
+
+  def list_equal([_ | _], []) do
+    false
+  end
+
+  def list_equal([], []) do
+    true
+  end
 
 
 
@@ -149,8 +185,45 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  # Rows
+  def won({m, m, m, _, _, _, _, _, _}) do
+    m
+  end
 
+  def won({_, _, _, m, m, m, _, _, _}) do
+    m
+  end
+
+  def won({_, _, _, _, _, _, m, m, m}) do
+    m
+  end
+
+  # Columns
+  def won({m, _, _, m, _, _, m, _, _}) do
+    m
+  end
+
+  def won({_, m, _, _, m, _, _, m, _}) do
+    m
+  end
+
+  def won({_, _, m, _, _, m, _, _, m}) do
+    m
+  end
+
+  # Diagonals
+  def won({m, _, _, _, m, _, _, _, m}) do
+    m
+  end
+
+  def won({_, _, m, _, m, _, m, _, _}) do
+    m
+  end
+
+  # No match
+  def won({_, _, _, _, _, _, _, _, _}) do
+    false
+  end
 
   ###########################
   # IGNORE FROM HERE TO END #
