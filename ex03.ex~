@@ -58,9 +58,9 @@ defmodule Ex03 do
   def odd_even([]), do: []
   def odd_even([h|t]) do
     if Integer.is_even h do
-      [:even,odd_even(t)]
+      [:even|odd_even(t)]
     else
-      [:odd,odd_even(t)]
+      [:odd|odd_even(t)]
     end
   end 
 
@@ -161,7 +161,24 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({:x,:x,:x,_3,_4,_5,_6,_7,_8}),do: :x
+  def won({_0,_1,_2,:x,:x,:x,_6,_7,_8}),do: :x
+  def won({_0,_1,_2,_3,_4,_5,:x,:x,:x}),do: :x
+  def won({:x,_1,_2,:x,_4,_5,:x,_7,_8}),do: :x
+  def won({_0,:x,_2,_3,:x,_5,_6,:x,_8}),do: :x
+  def won({_0,_1,:x,_3,_4,:x,_6,_7,:x}),do: :x
+  def won({:x,_1,_2,_3,:x,_5,_6,_7,:x}),do: :x
+  def won({_0,_1,:x,_3,:x,_5,:x,_7,_8}),do: :x
+  def won({:o,:o,:o,_3,_4,_5,_6,_7,_8}),do: :o
+  def won({_0,_1,_2,:o,:o,:o,_6,_7,_8}),do: :o 
+  def won({_0,_1,_2,_3,_4,_5,:o,:o,:o}),do: :o 
+  def won({:o,_1,_2,:o,_4,_5,:o,_7,_8}),do: :o  
+  def won({_0,:o,_2,_3,:o,_5,_6,:o,_8}),do: :o 
+  def won({_0,_1,:o,_3,_4,:o,_6,_7,:o}),do: :o 
+  def won({:o,_1,_2,_3,:o,_5,_6,_7,:o}),do: :o 
+  def won({_0,_1,:o,_3,:o,_5,:o,_7,_8}),do: :o
+  def won({_0,_1,_2,_3,_4,_5,_6,_7,_8}),do: false
+  
   #mail to ask
 
 

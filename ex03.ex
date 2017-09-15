@@ -110,8 +110,6 @@ defmodule Ex03 do
   """
 
   def list_equal([],[]), do: true
-  def list_equal([],_), do: false
-  def list_equal(_,[]), do: false
   def list_equal([h|t],[h|t1]), do: list_equal(t,t1)
   def list_equal(_,_), do: false
 
