@@ -54,9 +54,10 @@ defmodule Ex02 do
   # Write a function that uses pattern matching to return true   #
   # if the first two elements of a list are equal                #
   ################################################################
-  
-  first2equal = fn [a, b | t] -> a == b end
 
+  #first2equal = &(hd(&1) == hd(tl(&1)))
+  first2equal = fn [a, b | t] -> a == b end
+  
   assert  first2equal.([4, 4, 5, 6, 7])
   assert !first2equal.([4, 5, 6, 7, 8])
 
