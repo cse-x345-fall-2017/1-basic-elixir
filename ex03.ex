@@ -56,15 +56,21 @@ defmodule Ex03 do
   """
 
   def odd_even([]), do: []
-  def odd_even([h|t]) do
-    status = Integer.is_odd(h)
-    if status do
-      [:odd |odd_even(t)] 
-    else
-      [:even|odd_even(t)] 
-    end
+
+  def odd_even([true|t]) do
+    [:odd|odd_even(t)]
   end
 
+
+  def odd_even([false|t]) do
+    [:even|odd_even(t)]
+  end
+
+
+  def odd_even([h|t]) do
+    status = Integer.is_odd(h)
+    odd_even([status|t])
+  end
 
   ##############################################################################
   # 3.2:  5 points #
@@ -88,7 +94,7 @@ defmodule Ex03 do
   def list_contains([], _) do
     false
   end
-  def list_contains([h|_], t) do
+  def list_contains([h|_], h) do
     true
   end
   def list_contains([_|t], target) do
@@ -118,7 +124,7 @@ defmodule Ex03 do
   """
 
   def list_equal([], []) do
-    checkResult = true
+    true
   end
   def list_equal([h|t1], [h|t2]) do
     list_equal(t1, t2)
@@ -171,8 +177,53 @@ defmodule Ex03 do
 
   Think a little about a nice way to lay this code out.
   """
+  #1 2 3
+  def won({r, r, r, _, _, _, _, _, _}) do
+    r
+  end
 
-  def won . . . "your code"
+  #1 4 7
+  def won({r, _, _, r, _, _, r, _, _}) do
+    r
+  end
+  
+  #1 5 9
+  def won({r, _, _, _, r, _, _, _, r}) do
+    r
+  end
+
+  #3 5 7
+  def won({_, _, r, _, r, _, r, _, _}) do
+    r
+  end
+  
+  #4 5 6
+  def won({_, _, _, r, r, r, _, _, _}) do
+    r
+  end
+  
+  #2 5 8
+  def won({_, r, _, _, r, _, _, r, _}) do
+    r
+  end
+
+  #7 8 9
+  def won({_, _, _, _, _, _, r, r, r}) do
+    r
+  end
+
+  #3 6 9
+  def won({_, _, r, _, _, r, _, _, r}) do
+    r
+  end
+
+
+  #no won
+  def won({_, _, _, _, _, _, _, _, _}) do
+    false
+  end
+
+
 
 
   ###########################
