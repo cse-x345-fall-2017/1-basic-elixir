@@ -83,7 +83,28 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
+  def even_odd([h|t]) do
+   {helper_even([h|t]), helper_odd([h|t])}
+  end
+
+  def helper_even([]), do: []
+  def helper_even([h|t]) when Integer.is_even(h) do
+    [h|helper_even(t)]
+  end 
+  def helper_even([h|t]) when Integer.is_odd(h) do
+    [helper_even(t)]
+  end
+  
+  def helper_odd([]), do: []
+  def helper_odd([h|t]) when Integer.is_even(h) do
+    [helper_odd(t)]
+  end 
+  def helper_odd([h|t]) when Integer.is_odd(h) do
+    [h|helper_odd(t)]
+  end
+  
+
+
 
 
 
