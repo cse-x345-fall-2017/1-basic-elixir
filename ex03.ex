@@ -55,7 +55,17 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even([ head | tail ]) do
+    cond do
+      Integer.is_even head ->
+        [ :even | odd_even(tail) ]
+      Integer.is_odd head ->
+        [ :odd | odd_even(tail) ]
+    end
+  end
+  def odd_even([ ]), do: [ ]
+
+
 
 
   ##############################################################################
@@ -76,8 +86,9 @@ defmodule Ex03 do
       true
 
   """
-
-  def list_contains . .. "your code"
+  def list_contains([ head | tail ], head), do: true
+  def list_contains([ head | tail ], value), do: list_contains(tail, value)
+  def list_contains([ ], value), do: false
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +112,9 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  def list_equal([ a | b ], [ a | b ]), do: true
+  def list_equal([ _ | _ ],[ _ | _ ]), do: false
+
 
 
 
@@ -149,8 +162,18 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({ a,a,a,   _,_,_,   _,_,_ }), do: a # top row win
+  def won({ _,_,_,   a,a,a,   _,_,_ }), do: a # middle row win
+  def won({ _,_,_,   _,_,_,   a,a,a }), do: a # bottom row win
 
+  def won({ a,_,_,   a,_,_,   a,_,_ }), do: a # left column win
+  def won({ _,a,_,   _,a,_,   _,a,_ }), do: a # middle column win
+  def won({ _,_,a,   _,_,a,   _,_,a }), do: a # right column win
+
+  def won({ a,_,_,   _,a,_,   _,_,a }), do: a # first diagonal win
+  def won({ _,_,a,   _,a,_,   a,_,_ }), do: a # second diagonal win
+
+  def won({ _,_,_,   _,_,_,   _,_,_ }), do: false # no winner
 
   ###########################
   # IGNORE FROM HERE TO END #
