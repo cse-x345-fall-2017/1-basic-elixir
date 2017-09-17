@@ -55,7 +55,13 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even([]), do: []
+  def odd_even([ h | t ]) when Integer.is_odd(h) do
+    [:odd | odd_even(t)]
+  end
+  def odd_even([ h | t ]) when Integer.is_even(h) do
+    [:even | odd_even(t)]
+  end
 
 
   ##############################################################################
@@ -77,7 +83,9 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([], _), do: false
+  def list_contains([ x | _ ], x), do: true
+  def list_contains([ _ | t ], x), do: list_contains(t, x)
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,8 +109,9 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
+  def list_equal([], []), do: true
+  def list_equal([ h | t1 ], [ h | t2 ]), do: list_equal(t1, t2)
+  def list_equal(_, _), do: false
 
 
   ##############################################################################
@@ -149,7 +158,34 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  # Vertical winning positions
+  def won({a, _, _,
+           a, _, _,
+           a, _, _}), do: a
+  def won({_, a, _,
+           _, a, _,
+           _, a, _}), do: a
+  def won({_, _, a,
+           _, _, a,
+           _, _, a}), do: a
+  # Horizontal winning positions
+  def won({a, a, a,
+           _, _, _,
+           _, _, _}), do: a
+  def won({_, _, _,
+           a, a, a,
+           _, _, _}), do: a
+  def won({_, _, _,
+           _, _, _,
+           a, a, a}), do: a
+  # Diagonal winning positions
+  def won({a, _, _,
+           _, a, _,
+           _, _, a}), do: a
+  def won({_, _, a,
+           _, a, _,
+           a, _, _}), do: a
+  def won(_), do: false
 
 
   ###########################
