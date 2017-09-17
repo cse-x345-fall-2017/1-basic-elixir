@@ -55,10 +55,13 @@ defmodule Ex03 do
 
   """
 
-  def parity_atom(x), do: if Integer.is_even(x), do: :even, else: :odd
-
   def odd_even([]), do: []
-  def odd_even([ h | t ]), do: [parity_atom(h) | odd_even(t)]
+  def odd_even([ h | t ]) when Integer.is_odd(h) do
+    [:odd | odd_even(t)]
+  end
+  def odd_even([ h | t ]) when Integer.is_even(h) do
+    [:even | odd_even(t)]
+  end
 
 
   ##############################################################################
