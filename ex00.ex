@@ -30,16 +30,9 @@ defmodule Ex00 do
       elixir ex00.ex
   """
 
-  ##################
-  # 0.1:  0 points #
-  ##########################################################
-  # Write a function that increments its numeric parameter #
-  ##########################################################
+  inc = fn (inPut) -> inPut + 1     end
 
-  inc = your_anonymous_function(1)
 
   assert inc.(2)  == 3
   assert inc.(-1) == 0
 end
-
-
