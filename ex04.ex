@@ -39,7 +39,9 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse([h|t]) do
+    reduce([h|t], [], &[&1 |&2])
+  end
 
   ##############################################################################
   # 4.2:  5 points #
@@ -55,7 +57,13 @@ defmodule Ex04 do
 
   """
 
-  def min . . . "your code"
+  def min([h|t]) do
+    comp = fn
+      a, b when a >= b -> b
+      a, b when a < b -> a
+    end
+    reduce([h|t], comp)
+  end
 
   ##############################################################################
   # 4.3: 10 points #
