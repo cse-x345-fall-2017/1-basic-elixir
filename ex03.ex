@@ -55,8 +55,15 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  defp odd_or_even_listOfAtoms(i) do
+    cond do
+      Integer.is_even i -> :even
+      Integer.is_odd  i -> :odd
+    end
+  end
 
+  def odd_even([]), do: []
+  def odd_even([head|tail]), do: [odd_or_even_listOfAtoms(head) | odd_even(tail)]
 
   ##############################################################################
   # 3.2:  5 points #
@@ -77,7 +84,9 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([], _value),   do: false
+  def list_contains([head | tail], containsvalue), do: head==containsvalue or list_contains(tail, containsvalue)
+
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +110,9 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  def list_equal([], []), do: true
+  def list_equal([head | tail1], [head | tail2]), do: list_equal(tail1, tail2)
+  def list_equal(_,_), do: false
 
 
 
@@ -149,7 +160,15 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({ a, a, a, _, _, _, _, _, _ }), do: a
+  def won({ _, _, _, a, a, a, _, _, _ }), do: a
+  def won({ _, _, _, _, _, _, a, a, a }), do: a
+  def won({ a, _, _, a, _, _, a, _, _ }), do: a
+  def won({ _, a, _, _, a, _, a, _, _ }), do: a
+  def won({ _, _, a, _, _, a, _, _, a }), do: a
+  def won({ a, _, _, _, a, _, _, _, a }), do: a
+  def won({ _, _, a, _, a, _, a, _, _ }), do: a
+  def won( _ ), do: false
 
 
   ###########################
