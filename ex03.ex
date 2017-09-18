@@ -55,7 +55,11 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even([h | t]) when Integer.is_odd(h), do: [:odd | odd_even(t)]
+  def odd_even([h | t]) when Integer.is_even(h), do: [:even | odd_even(t)]
+  def odd_even(h), do: h
+
+
 
 
   ##############################################################################
@@ -76,8 +80,10 @@ defmodule Ex03 do
       true
 
   """
+   def list_contains([_h | _t], _a), do: true
+   def list_contains([_h | t], a), do: list_contains(t, a)
+   def list_contains([], _a), do: false
 
-  def list_contains . .. "your code"
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +107,10 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+   def list_equal([],[]), do: true
+   def list_equal([_h | tail1],[_h | tail2]), do: list_equal(tail1, tail2)
+   def list_equal(_e1, _e2), do: false
+
 
 
 
@@ -149,7 +158,15 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+   def won({marked, marked, marked, _4, _5, _6, _7, _8, _9}), do: marked
+   def won({_1, _2, _3, marked, marked, marked, _7, _8, _9}), do: marked
+   def won({_1, _2, _3, _4, _5, _6, marked, marked, marked}), do: marked
+   def won({_1, _2, marked, _4, marked, _6, marked, _8, _9}), do: marked
+   def won({marked, _2, _3, _4, marked, _6, _7, _8, marked}), do: marked
+   def won({_1, _2, marked, _4, _5, marked, _7, _8, marked}), do: marked
+   def won({marked, _2, _3, marked, _5, _6, marked, _8, _9}), do: marked
+   def won(_t), do: false
+
 
 
   ###########################
