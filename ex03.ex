@@ -55,7 +55,16 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def atom_Generator(i), do: 
+	if Integer.is_even(i) do:
+		:even
+	else
+		:odd
+	end
+
+  def odd_even= fn ([h | t]) ->
+	[atom_Generator(h) | odd_even[t]]
+  end
 
 
   ##############################################################################
@@ -77,7 +86,13 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains = fn ([h | t], givenValue) ->
+	if h = givenValue do
+		true
+	else
+		list_contains([t], givenValue)
+	end
+  end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +116,11 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  def list_equal([], []), do: true
+  def list_equal([h | t1], [h | t2]), do:
+	list_equal([t1], [t2])
+  def list_equal([h1 | _], [h2 |_]), do: false 
+	
 
 
 
@@ -149,7 +168,39 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({player, player, player,
+           _,      _,      _,
+           _,      _,      _     }), do: player
+
+  def won({_,      _,      _,
+           player, player, player,
+           _,      _,      _     }), do: player
+
+  def won({_,      _,      _,
+           _,      _,      _,
+           player, player, player}), do: player
+ 
+  def won({player, _,      _, 
+           player, _,      _,
+           player, _,      _     }), do: player
+ 
+  def won({_,      player, _,     
+           _,      player, _,
+           _,      player, _     }), do: player
+
+  def won({_,      _,      player, 
+           _,      _,      player,
+           _,      _,      player}), do: player
+
+  def won({player, _,      _,
+           _,      player, _,
+           _,      _,      player}), do: player
+
+  def won({_,      _,      player,
+           _,      player, _,
+           player, _,      _     }), do: player
+
+  def won({_}), do: false  
 
 
   ###########################
