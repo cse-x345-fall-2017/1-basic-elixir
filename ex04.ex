@@ -39,7 +39,7 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse([h|t]), do: reduce([h|t], [], &([&1|&2]))
 
   ##############################################################################
   # 4.2:  5 points #
@@ -55,7 +55,8 @@ defmodule Ex04 do
 
   """
 
-  def min . . . "your code"
+  def min([h|t]),  do: reduce([h|t], fn (a,b) when a <= b -> a
+					(a,b) when a > b -> b end)
 
   ##############################################################################
   # 4.3: 10 points #
@@ -75,7 +76,11 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
+  def reduce_even_odd([h|t], {state1,state2}, func), do: reduce_even_odd(t, func.(h, {state1,state2}), func)
+  def reduce_even_odd([ ], {state1,state2}, _func),  do: {reverse(state1),reverse(state2)}
+  def even_odd([h|t]), do: reduce_even_odd([h|t],{[],[]},fn (h,{evens,odds}) when Integer.is_odd(h) -> {evens,[h|odds]}
+                                                            (h,{evens,odds}) when Integer.is_even(h) -> {[h|evens],odds} 
+						            end)			
 
 
 
