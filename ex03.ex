@@ -55,7 +55,19 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+def odd_even([]), do: []
+def odd_even( [ head | tail ] ) do 
+    [ check_integer( head ) | odd_even( tail ) ]  
+end
+def check_integer(1), do: :odd
+def check_integer(2), do: :even
+def check_integer(3), do: :odd
+def check_integer(4), do: :even
+def check_integer(5), do: :odd
+def check_integer(6), do: :even
+def check_integer(7), do: :odd
+def check_integer(8), do: :even
+def check_integer(9), do: :odd
 
 
   ##############################################################################
@@ -77,8 +89,10 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
-
+def list_contains([], n ), do: []
+def list_contains([head|tail], n) do
+    Enum.member?([head|tail], n)
+end
   ##############################################################################
   # 3.3:  5 points #
   ##################
@@ -101,9 +115,11 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
-
+def list_equal([],[]), do: []
+def list_equal([h1 | t1], [h2 | t2]) do
+   check_length(1 + length(t1), 1 + length(t2)) 
+end
+def check_length( a, b ), do: a == b
 
   ##############################################################################
   # 3.4:  5 points #
@@ -149,7 +165,7 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+ #def won . . . "your code"
 
 
   ###########################
