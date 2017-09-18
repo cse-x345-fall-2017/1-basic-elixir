@@ -39,7 +39,11 @@ defmodule Ex04 do
       [ 1, 2, 3, 4, 5 ]
 
   """
-  def reverse . . . "your code"
+  def reverse([ h | t ]), do: reduce0( t, [h] )
+  def reduce0([ h | t ], v ), do: reduce0( t, [ h | v ])
+  def reduce0([], v), do: v
+
+
 
   ##############################################################################
   # 4.2:  5 points #
@@ -54,8 +58,28 @@ defmodule Ex04 do
       -7
 
   """
+  #def mins([ h | t ]), do: mins( t, h )
+  #def mins([ h | t ], state) do 
+  #case h < state do
+  #true -> mins( t, h )
+  #false -> mins( t, state )
+  #end
+  #end
+  #def mins([], state), do: state
 
-  def min . . . "your code"
+
+
+  def min([ h | t ]) do
+  reduce( t, h, fn(a, b) -> case a < b do
+  true -> a
+  false -> b
+  end
+  end)
+  end
+ 
+
+
+
 
   ##############################################################################
   # 4.3: 10 points #
@@ -75,7 +99,22 @@ defmodule Ex04 do
   return value will be the thing you have to manipulate.
   """
 
-  def even_odd . . . "your code"
+  def even_odd([ h | t ]) do
+  case Integer.is_even(h) do
+  true -> even_odd( t, [h], [])
+  false -> even_odd( t, [], [h])
+  end
+  end
+  def even_odd([ h | t ], even, odd ) do
+  case Integer.is_even(h) do
+  true -> even_odd( t, [ h | even ], odd )
+  false -> even_odd( t, even, [ h | odd ])
+  end
+  end
+  def even_odd([], even, odd ), do: {reverse(even), reverse(odd)}
+
+  
+
 
 
 
