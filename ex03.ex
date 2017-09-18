@@ -55,7 +55,12 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even([]), do: []
+  def odd_even([ h | t ]) do case Integer.is_even(h) do
+  true -> [ :even | odd_even(t) ]
+  false -> [ :odd | odd_even(t) ]
+  end
+  end
 
 
   ##############################################################################
@@ -77,7 +82,16 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([ h | t ], a ) do 
+  case a == h do
+  true -> true
+  false -> list_contains( t, a )
+  end
+  end
+  def list_contains([], _a ), do: false
+
+
+
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,8 +115,8 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
+  def list_equal([ h1 | t1 ], [ h1 | t1 ]), do: true
+  def list_equal([ _h1 | _t1 ], [ _h | _t ]), do: false
 
 
   ##############################################################################
@@ -122,7 +136,7 @@ defmodule Ex03 do
        3 | 4 | 5      => { 1, 2, 3,  4, 5, 6,  7, 8, 9 }
        --+---+--
        6 | 7 | 8
-
+ 
   Each element of the tuple is set to :x or :o if the corresponding
   player has occupied the square, or its number otherwise.
 
@@ -149,7 +163,25 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({:x,_a,_b,:x,_c,_d,:x,_e,_f}), do: :x
+  def won({:x,:x,:x,_a,_b,_c,_d,_e,_f}), do: :x
+  def won({_a,_b,_c,:x,:x,:x,_d,_e,_f}), do: :x
+  def won({_a,_b,_c,_d,_e,_f,:x,:x,:x}), do: :x
+  def won({_a,:x,_b,_c,:x,_d,_e,:x,_f}), do: :x
+  def won({_a,_b,:x,_c,_d,:x,_e,_f,:x}), do: :x
+  def won({:x,_a,_b,_c,:x,_d,_e,_f,:x}), do: :x
+  def won({_a,_b,:x,_c,:x,_d,:x,_e,_f}), do: :x
+  def won({:o,:o,:o,_a,_b,_c,_d,_e,_f}), do: :o
+  def won({_a,_b,_c,:o,:o,:o,_d,_e,_f}), do: :o
+  def won({_a,_b,_c,_d,_e,_f,:o,:o,:o}), do: :o
+  def won({:o,_a,_b,:o,_c,_d,:o,_e,_f}), do: :o
+  def won({_a,:o,_b,_c,:o,_d,_e,:o,_f}), do: :o
+  def won({_a,_b,:o,_c,_d,:o,_e,_f,:o}), do: :o
+  def won({:o,_a,_b,_c,:o,_d,_e,_f,:o}), do: :o
+  def won({_a,_b,:o,_c,:o,_d,:o,_e,_f}), do: :o
+  def won({_a,_b,_c,_d,_e,_f,_g,_h,_i}), do: false
+
+
 
 
   ###########################

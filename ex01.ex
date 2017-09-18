@@ -3,7 +3,7 @@ Code.load_file "support.ex"
 
 defmodule Ex01 do
   use ExUnit.Case
-  import Support
+  #import Support
 
   ##############################################################################
   # 1: 5 questions,  30 points available                                       #
@@ -36,7 +36,8 @@ defmodule Ex01 do
   # Write a function that adds two numbers using fn syntax #
   ##########################################################
 
-  sum2a = your_anonymous_function(1, 2)
+  # sum2a = your_anonymous_function(1, 2)
+  sum2a = fn(a, b) -> a + b end
 
   assert sum2a.(1, 2)    == 3
   assert sum2a.(-1, 100) == 99
@@ -47,7 +48,8 @@ defmodule Ex01 do
   # Write a function that adds two numbers using & syntax  #
   ##########################################################
 
-  sum2b = your_anonymous_function(1, 2)
+  #sum2b = your_anonymous_function(1, 2)
+  sum2b = &(&1 + &2)
 
   assert sum2b.(1, 2)    == 3
   assert sum2b.(-1, 100) == 99
@@ -60,7 +62,9 @@ defmodule Ex01 do
   # no explicit + operators in your function                          #
   #####################################################################
 
-  sum3a = your_anonymous_function(1, 2, 3)
+  #sum3a = your_anonymous_function(1, 2, 3)
+  sum3a = fn(a, b, c) -> sum2a.(a, sum2a.(b, c)) end
+
 
   assert sum3a.(1, 3, 5)  == 9
   assert sum3a.(1, -3, 5) == 3
@@ -71,7 +75,8 @@ defmodule Ex01 do
   # Do the same using the & notation #
   ####################################
 
-  sum3b = your_anonymous_function()
+  #sum3b = your_anonymous_function()
+  sum3b = &(sum2b.(&1, sum2b.(&2, &3)))
 
   assert sum3b.(1, 3, 5)  == 9
   assert sum3b.(1, -3, 5) == 3
@@ -86,7 +91,8 @@ defmodule Ex01 do
   # function. The examples below will make this clearer :)               #
   ########################################################################
 
-  create_adder = your_anonymous_function(1)
+  #create_adder = your_anonymous_function(1)
+  create_adder = fn(a) -> fn(b) -> a+b end end
 
   add_2  = create_adder.(2)
   add_99 = create_adder.(99)
