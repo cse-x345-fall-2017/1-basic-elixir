@@ -55,7 +55,11 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def outputAtom(n) when Integer.is_odd(n) do :odd end
+  def outputAtom(n) when Integer.is_even(n) do :even end
+
+  def odd_even([]), do: [] #IO.puts "empty list"#
+  def odd_even([head|tail]), do: [outputAtom(head)|odd_even(tail)]
 
 
   ##############################################################################
@@ -77,7 +81,12 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains([head|tail],n) do
+    cond do
+       n in [head|tail] -> true 
+       !(n in [head|tail]) -> false
+    end
+  end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +110,14 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  def list_equal([],[]), do: true	#The 2 lists are empty lists then they are equal.
+  def list_equal([a1|tail1],[a2|tail2]) #Recursion if the head elements are equal from each list.
+	when a1 == a2, do:
+	   list_equal(tail1,tail2)
+  def list_equal([a1|tail1],[a2|tail2]) #Print false if head elemnets are not equal.	
+	when a1 !== a2, do: false
+  def list_equal([],[_]), do: false     #Print false if size are not equal for lists.
+  def list_equal([_],[]), do: false     #Print false if size are not equal for lists.
 
 
 
@@ -149,7 +165,16 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  def won({a1,a2,a3,a4,a5,a6,a7,a8,a9}) do
+         cond do
+		{:o,:o,:o}in[{a1,a2,a3},{a4,a5,a6},{a7,a8,a9},{a1,a4,a7},{a2,a5,a8},{a3,a6,a9},{a1,a5,a9},{a3,a5,a7}] -> :o
+		{:x,:x,:x}in[{a1,a2,a3},{a4,a5,a6},{a7,a8,a9},{a1,a4,a7},{a2,a5,a8},{a3,a6,a9},{a1,a5,a9},{a3,a5,a7}] -> :x
+		({:o,:o,:o}in[{a1,a2,a3},{a4,a5,a6},{a7,a8,a9},{a1,a4,a7},{a2,a5,a8},{a3,a6,a9},{a1,a5,a9},{a3,a5,a7}] && 
+		{:x,:x,:x}in[{a1,a2,a3},{a4,a5,a6},{a7,a8,a9},{a1,a4,a7},{a2,a5,a8},{a3,a6,a9},{a1,a5,a9},{a3,a5,a7}]) -> false
+		!({:o,:o,:o}in[{a1,a2,a3},{a4,a5,a6},{a7,a8,a9},{a1,a4,a7},{a2,a5,a8},{a3,a6,a9},{a1,a5,a9},{a3,a5,a7}] && 
+		{:x,:x,:x}in[{a1,a2,a3},{a4,a5,a6},{a7,a8,a9},{a1,a4,a7},{a2,a5,a8},{a3,a6,a9},{a1,a5,a9},{a3,a5,a7}]) -> false
+	end
+  end
 
 
   ###########################
