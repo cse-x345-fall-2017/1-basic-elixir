@@ -55,7 +55,17 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  #def odd_even . . . "your code"
+
+  def odd_even([]), do: []
+  def odd_even([ h | t]) do 
+    if Integer.is_odd(h)
+     [":odd" | odd_even(t)] 
+   else
+     [":even" | odd_even(t)] 
+   end
+  end 
+  #def odd_even([ Integer.is_odd(h) | t]), do: [":odd" + odd_even(t)] 
 
 
   ##############################################################################
@@ -77,7 +87,11 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  def list_contains(list, word) do 
+  
+    Enum.member?(list, word)
+
+  end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,7 +115,7 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  #def list_equal . . . "your code"
 
 
 
@@ -149,7 +163,7 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  #def won . . . "your code"
 
 
   ###########################
